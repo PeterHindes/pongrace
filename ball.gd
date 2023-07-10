@@ -38,5 +38,3 @@ func _on_area_2d_body_entered(body):
 		if body.name == "Player1" or body.name == "Player2":
 			velocity.x *= -1
 			velocity.y = verticalScaling*(position.y+20 - get_center(body)) # = if above + if below
-		elif body.name == "Sides":
-			velocity.y *= -1
