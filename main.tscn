@@ -1,0 +1,153 @@
+[gd_scene load_steps=8 format=3 uid="uid://bhadej7oieybw"]
+
+[ext_resource type="Script" path="res://Game Controller.gd" id="1_21nki"]
+[ext_resource type="Script" path="res://Player.gd" id="1_sirmr"]
+[ext_resource type="Script" path="res://ball.gd" id="1_yljx8"]
+[ext_resource type="FontFile" uid="uid://dtf5ygfeu8bq" path="res://Roboto-Regular.ttf" id="3_p231w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o55v6"]
+size = Vector2(7, 260)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wigj1"]
+size = Vector2(35, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5x37"]
+size = Vector2(40, 40)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1440.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="Mid Court Line" type="Node2D" parent="."]
+position = Vector2(700, 0)
+
+[node name="ColorRect" type="ColorRect" parent="Mid Court Line"]
+offset_right = 40.0
+offset_bottom = 120.0
+color = Color(0.788235, 0.788235, 0.788235, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Mid Court Line"]
+offset_top = 160.0
+offset_right = 40.0
+offset_bottom = 280.0
+color = Color(0.788235, 0.788235, 0.788235, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Mid Court Line"]
+offset_top = 320.0
+offset_right = 40.0
+offset_bottom = 440.0
+color = Color(0.788235, 0.788235, 0.788235, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Mid Court Line"]
+visible = false
+offset_top = 480.0
+offset_right = 40.0
+offset_bottom = 600.0
+color = Color(0.788235, 0.788235, 0.788235, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="Mid Court Line"]
+offset_top = 640.0
+offset_right = 40.0
+offset_bottom = 760.0
+color = Color(0.788235, 0.788235, 0.788235, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="Mid Court Line"]
+offset_top = 800.0
+offset_right = 40.0
+offset_bottom = 920.0
+color = Color(0.788235, 0.788235, 0.788235, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="Mid Court Line"]
+offset_top = 960.0
+offset_right = 40.0
+offset_bottom = 1080.0
+color = Color(0.788235, 0.788235, 0.788235, 1)
+
+[node name="Player1" type="CharacterBody2D" parent="."]
+position = Vector2(40, 405)
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_sirmr")
+
+[node name="Player1 Paddle" type="ColorRect" parent="Player1"]
+offset_right = 40.0
+offset_bottom = 270.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1"]
+position = Vector2(36.5, 135)
+shape = SubResource("RectangleShape2D_o55v6")
+
+[node name="Sides" type="CharacterBody2D" parent="Player1"]
+collision_mask = 0
+motion_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1/Sides"]
+position = Vector2(17.5, 2.5)
+shape = SubResource("RectangleShape2D_wigj1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Player1/Sides"]
+position = Vector2(17.5, 267.5)
+shape = SubResource("RectangleShape2D_wigj1")
+
+[node name="Player2" type="CharacterBody2D" parent="."]
+position = Vector2(1360, 405)
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_sirmr")
+
+[node name="Player2 Paddle" type="ColorRect" parent="Player2"]
+offset_right = 40.0
+offset_bottom = 270.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
+position = Vector2(3.5, 135)
+shape = SubResource("RectangleShape2D_o55v6")
+
+[node name="Sides" type="CharacterBody2D" parent="Player2"]
+collision_mask = 0
+motion_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2/Sides"]
+position = Vector2(22.5, 2.5)
+shape = SubResource("RectangleShape2D_wigj1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Player2/Sides"]
+position = Vector2(22.4844, 267.5)
+shape = SubResource("RectangleShape2D_wigj1")
+
+[node name="Ball" type="CharacterBody2D" parent="."]
+position = Vector2(700, 520)
+motion_mode = 1
+script = ExtResource("1_yljx8")
+
+[node name="Ball" type="ColorRect" parent="Ball"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_w5x37")
+
+[node name="Area2D" type="Area2D" parent="Ball"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball/Area2D"]
+position = Vector2(20, 20)
+scale = Vector2(1.1, 1.1)
+shape = SubResource("RectangleShape2D_w5x37")
+
+[node name="Game Controller" type="Node2D" parent="."]
+script = ExtResource("1_21nki")
+
+[node name="Score" type="Label" parent="Game Controller"]
+offset_left = 498.0
+offset_top = 88.0
+offset_right = 847.0
+offset_bottom = 174.0
+theme_override_fonts/font = ExtResource("3_p231w")
+theme_override_font_sizes/font_size = 70
+text = "Score     x:y"
+
+[connection signal="body_entered" from="Ball/Area2D" to="Ball" method="_on_area_2d_body_entered"]
